@@ -17,7 +17,7 @@ require('dotenv').config()
 */
 const pg = require('pg')
 
-if (process.env.DATABASE_URL) {
+if (process.env.POSTGRES_DB) {
   pg.defaults.ssl = { rejectUnauthorized: false }
 }
 
@@ -38,7 +38,7 @@ module.exports = {
   },
   production: {
     ...sharedConfig,
-    connection: process.env.DATABASE_URL,
+    connection: process.env.POSTGRES_DB,
     pool: { min: 2, max: 10 },
   },
 }
